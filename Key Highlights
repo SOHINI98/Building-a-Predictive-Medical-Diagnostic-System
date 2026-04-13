@@ -1,0 +1,20 @@
+ANALYTICS PROJECTS
+Predictive Medical Diagnostic System using Advanced Ensemble ML  —  2025
+Python · scikit-learn · XGBoost · LightGBM · CatBoost · LDA · PCA · VIF · Stratified CV · Stacking
+•	Built end-to-end multinomial classification pipeline predicting 41 diseases from 132 binary symptoms across 
+  304 deduplicated patient records; resolved severe multicollinearity (63 highly correlated symptom pairs) 
+  via two-stage hierarchical clustering and iterative VIF elimination, reducing the feature space by 30% while 
+   retaining maximum discriminative signal.
+•	Applied and empirically compared five dimensionality reduction strategies 
+   (PCA, LDA, TruncatedSVD, VIF-filtered, Hybrid) — Linear Discriminant Analysis (LDA) outperformed all others
+    by projecting 132 features into 40 supervised discriminant components that directly maximise separation across 
+   41 disease classes, confirming its theoretical optimality for multinomial targets.
+•	Engineered 25+ domain-driven features including 10 clinical symptom group scores 
+     (gastro, neuro, cardiac, respiratory, hepatic), symptom rarity-weighted signals, Shannon entropy of symptom
+     distribution, and multi-organ system breadth index — capturing diagnostic patterns invisible to raw binary inputs.
+•	Trained and intensively tuned 7 advanced ensemble models (Random Forest, XGBoost multi:softmax, LightGBM, CatBoost, 
+     Extra Trees, Soft Voting, Stacking with multinomial LR meta-learner) using RandomizedSearchCV (40–60 iterations each)
+     with Stratified 5-Fold CV; applied class_weight=‘balanced’ throughout — no SMOTE — to handle post-dedup class imbalance.
+•	Achieved ~97% weighted F1 (cross-validated) and ~0.99 ROC-AUC (OvR macro) across 41 disease categories;
+    evaluated with per-class F1, macro F1, weighted precision/recall, and One-vs-Rest ROC curves,
+    demonstrating robust generalisation on a high-difficulty 41-class multinomial problem with limited training data (304 rows).
